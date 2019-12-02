@@ -9,6 +9,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,12 +22,12 @@ public class FreeCrmTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-		ChromeOptions option = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless");
 		options.addArguments("--disable-gpu");
 		options.addArguments("window-size=1024,768");
 		options.addArguments("--no-sandbox");
-		driver = new ChromeDriver(option);
+		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		driver.get("https://www.freecrm.com/index.html");
 	}
