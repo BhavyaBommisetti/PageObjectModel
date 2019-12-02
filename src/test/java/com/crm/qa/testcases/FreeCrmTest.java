@@ -19,7 +19,7 @@ public class FreeCrmTest {
 	static WebDriver driver;
 	static JavascriptExecutor js;
 	
-	@BeforeMethod
+	/*@BeforeMethod
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
 		ChromeOptions options = new ChromeOptions();
@@ -30,11 +30,34 @@ public class FreeCrmTest {
 		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		driver.get("https://www.freecrm.com/index.html");
-	}
+	}*/
 
 	@Test
 	public void freeCrmTitleTest() throws InterruptedException, IOException {
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		options.addArguments("--disable-gpu");
+		options.addArguments("window-size=1024,768");
+		options.addArguments("--no-sandbox");
 		
+		WebDriver driver = new ChromeDriver(options);
+		driver.get("https://www.wikipedia.org/");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		driver.findElement(By.id("searchInput")).sendKeys("wipro");
+		driver.findElement(By.className("pure-button")).click();
+		
+		String h= driver.getTitle();
+		String e= "wipro - wikipedia";
+		driver.close();
+		if(h.equalsIgnoreCase(e)){
+			System.out.println("pass");
+		}
+		else{
+			System.out.println("fail");
+		}
+		/*
 		String title = driver.getTitle();
 		System.out.println("title is: " + title);
 		getRunTimeInfoMessage("info", title);
@@ -49,7 +72,7 @@ public class FreeCrmTest {
 			takeScreenshot("freecrmloginpage");
 			Assert.assertTrue(false);
 		}
-
+		*/
 	}
 
 	public static void getRunTimeInfoMessage(String messageType, String message) throws InterruptedException {
