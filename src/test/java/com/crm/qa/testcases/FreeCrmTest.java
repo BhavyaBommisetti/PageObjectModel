@@ -93,6 +93,6 @@ public class FreeCrmTest {
 		FileUtils.copyFile(src, 
 				new File("/Users/NaveenKhunteta/Documents/MyPOMFramework/PageObjectModel/screenshots/" + fileName +".png"));
 
-	}*/
+	}
 
 }
