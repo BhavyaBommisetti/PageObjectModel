@@ -18,25 +18,27 @@ public class FreeCrmTest {
 
 	static WebDriver driver;
 	static JavascriptExecutor js;
-
+	
 	@BeforeMethod
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		options.addArguments("--disable-gpu");
-		options.addArguments("window-size=1024,768");
-		options.addArguments("--no-sandbox");
-		driver = new ChromeDriver(options);
 		js = (JavascriptExecutor) driver;
 		driver.get("https://www.freecrm.com/index.html");
 	}
 
 	@Test
 	public void freeCrmTitleTest() throws InterruptedException, IOException {
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless");
+		options.addArguments("--disable-gpu");
+		options.addArguments("window-size=1024,768");
+		options.addArguments("--no-sandbox");
+		driver = new ChromeDriver(options);
 		String title = driver.getTitle();
 		System.out.println("title is: " + title);
 		getRunTimeInfoMessage("info", title);
+		
+		
 
 		if (title.equals("Free CRM software in the cloud powers sales and customer serviceQQQQ")) {
 			getRunTimeInfoMessage("info", "title is correct!! YAY!!!");
@@ -91,6 +93,6 @@ public class FreeCrmTest {
 		FileUtils.copyFile(src, 
 				new File("/Users/NaveenKhunteta/Documents/MyPOMFramework/PageObjectModel/screenshots/" + fileName +".png"));
 
-	}
+	}*/
 
 }
